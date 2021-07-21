@@ -56,7 +56,7 @@ class LevelManager : MonoBehaviour
     /// </summary>
     /// <param name="level"></param>
     /// <returns></returns>
-    private PlayerStats GetData(int level)
+    public PlayerStats GetData(int level)
     {
         if (m_levelData.ContainsKey(level))
         {
