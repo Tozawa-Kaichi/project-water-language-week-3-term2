@@ -6,14 +6,21 @@ using UnityEngine.UI;
 /// </summary>
 public class StatusWindowManager : MonoBehaviour
 {
-    [SerializeField] Text m_statusWindow = default;
-    [SerializeField] LevelController m_player = default;
+    [SerializeField] private Text m_statusWindow = default;
+    [SerializeField] private LevelController m_player = default;
     int m_lastUpdateLevel = 0;
 
+    public LevelController Player
+    {
+        get
+        {
+            return m_player;
+        }
+    }
     void Update()
     {
         // レベルが変わったら再描画する
-        if (m_player.GetLevel() != m_lastUpdateLevel)
+        if (m_player.Level != m_lastUpdateLevel)
         {
             Refresh();
             m_lastUpdateLevel = m_player.Level;
@@ -27,7 +34,7 @@ public class StatusWindowManager : MonoBehaviour
     {
         // C# の標準ライブラリで文字列を組み立てる
         System.Text.StringBuilder builder = new System.Text.StringBuilder();
-        PlayerStats s = m_player.GetStatus();
+        PlayerStats s = m_player.Stats;
         builder.AppendLine(s.Level.ToString());
         builder.AppendLine(s.Maxhp.ToString());
         builder.AppendLine(s.Maxmp.ToString());
