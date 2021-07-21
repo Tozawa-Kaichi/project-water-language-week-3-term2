@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// レベルアップテーブルを管理するクラス
 /// </summary>
-public class LevelManager : MonoBehaviour
+class LevelManager : MonoBehaviour
 {
     /// <summary>レベルアップテーブルが CSV として格納されているテキスト</summary>
     [SerializeField] TextAsset m_levelUpTable = default;
@@ -56,7 +56,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     /// <param name="level"></param>
     /// <returns></returns>
-    public PlayerStats GetData(int level)
+    private PlayerStats GetData(int level)
     {
         if (m_levelData.ContainsKey(level))
         {
